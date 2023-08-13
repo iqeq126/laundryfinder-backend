@@ -1,0 +1,57 @@
+<!-- <form enctype="multipart/form-data" method="POST">
+<button >UPLOAD</button>
+
+<h1>Result by OCR::{{name}}</h1>
+</form> -->
+<html lang="en">
+
+<head>
+    <!-- required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Best OCR ever</title>
+</head>
+<nav class="navbar navbar-dark bg-dark">
+    <h1 style="color: aliceblue;">Simple OCR</h1>
+</nav>
+<div class="container">
+
+    <form action="." method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <button type="submit" class="btn btn-lg btn-success">Upload</button>
+    </form>
+
+    {% if obj %}
+    <h3>Succesfully uploaded : {{obj.caption}}</h3>
+    <p>{{obj.image.url}}</p>
+    <p>{{result}}</p>
+    <img src="{{obj.image.url}}">
+    <!-- Result::{{ocrres}} -->
+    {% endif %}
+    <hr>
+
+
+    <!-- {% for x in img %}
+    {% if forloop.first %}<div class="row ">{% endif %}
+        <div class="col-lg-4 col-md-4 col-12">
+            <div class="text-center mt-2">
+                <img src="{{x.image.url}}" height="70%" width="70%" class="img-thumbnail" alt="...">
+                <h2 class="text-center">{{x.caption}}</h2>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 %} -->
+</div>
+<!-- <div class=row>{% endif %}
+
+    {% if forloop.last %}</div>{% endif %}
+
+{% endfor %} -->
+</div>
+
+</html>

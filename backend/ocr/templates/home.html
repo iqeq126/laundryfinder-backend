@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    {% load static%}
+    <link rel="stylesheet" href={% static 'mystyle.css' %}>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Best OCR</title>
+</head>
+
+<body>
+
+    <div class="wrapper" style="overflow-y: scroll;">
+        <nav class="nav">
+            <ul style="position: relative;z-index: 2; text-align: center; margin-right: 10px; font-size: 20px;">
+                <a style="color: white; text-decoration: none;" href="{%url 'aboutocr'%}">What is ocr?</a>
+            </ul>
+        </nav>
+        <div class="container">
+            <h1 style=" font-weight: bolder;">Simple OCR</h1>
+            <form style="margin-top: 15%; " class="form" action="." method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                {% if obj %}
+                <h3 style="margin-top: -30px;">Succesfully uploaded image for language {{obj.language}}</h3>
+                <br>
+                <br>
+                <p>{{result}}</p>
+                <br>
+                <br>
+                <p>{{transRes}}</p>
+                <img style="width: 100%; height: auto" src="{{obj.image.url}}">
+                <!-- Result::{{ocrres}} -->
+                <br>
+                <br>
+                {% endif %}
+                <button style="margin-top: 8%;" type="submit" id="login-button">Upload</button>
+            </form>
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+
+</html>
